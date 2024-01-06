@@ -24,7 +24,9 @@ export function CatchAllPage() {
 
   useEffect(() => {
     async function load() {
-      const pageData = await PLASMIC.maybeFetchComponentData(location.pathname);
+      const pageData = await PLASMIC.maybeFetchComponentData(
+        location.pathname + location.search
+      );
       setPageData(pageData);
       setLoading(false);
     }
@@ -38,7 +40,7 @@ export function CatchAllPage() {
     return <div>Not found</div>;
   }
   // The page will already be cached from the `load` call above.
-  return <PlasmicComponent component={location.pathname} />;
+  return <PlasmicComponent component={location.pathname + location.search} />;
 }
 
 export default App;
